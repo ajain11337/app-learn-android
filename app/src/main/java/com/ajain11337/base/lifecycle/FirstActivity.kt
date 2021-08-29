@@ -55,12 +55,44 @@ class FirstActivity : AppCompatActivity() {
      * Case 3 -> Activity + Fragment A to Activity + Fragment B
      * Case 4 -> Activity + Fragment A to Activity + Fragment B, finishing A
      */
+    /**
+     * Logs
+     * 2021-08-29 14:18:37.548 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onPause: FirstFragment
+     * 2021-08-29 14:18:37.549 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onPause: FirstActivity
+     * 2021-08-29 14:18:37.568 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onCreate: SecondActivity
+     * 2021-08-29 14:18:37.592 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onAttach: SecondFragment
+     * 2021-08-29 14:18:37.592 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onCreate: SecondFragment
+     * 2021-08-29 14:18:37.593 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onCreateView: SecondFragment
+     * 2021-08-29 14:18:37.596 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onViewCreated: SecondFragment
+     * 2021-08-29 14:18:37.597 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onStart: SecondFragment
+     * 2021-08-29 14:18:37.597 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onStart: SecondActivity
+     * 2021-08-29 14:18:37.599 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onResume: SecondActivity
+     * 2021-08-29 14:18:37.599 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onResume: SecondFragment
+     * 2021-08-29 14:18:38.083 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onStop: FirstFragment
+     * 2021-08-29 14:18:38.083 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onStop: FirstActivity
+     * 2021-08-29 14:18:38.086 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onDestroyView: FirstFragment
+     * 2021-08-29 14:18:38.087 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onDestroy: FirstFragment
+     * 2021-08-29 14:18:38.087 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onDetach: FirstFragment
+     * 2021-08-29 14:18:38.087 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onDestroy: FirstActivity
+     */
     fun openSecondActivity(view: View) {
         val intent = Intent(this, SecondActivity::class.java)
         startActivity(intent)
         finish()
     }
 
+    /**
+     * Logs
+     * 2021-08-29 14:15:31.146 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onCreate: FirstActivity
+     * 2021-08-29 14:15:31.173 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onAttach: FirstFragment
+     * 2021-08-29 14:15:31.174 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onCreate: FirstFragment
+     * 2021-08-29 14:15:31.174 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onCreateView: FirstFragment
+     * 2021-08-29 14:15:31.176 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onViewCreated: FirstFragment
+     * 2021-08-29 14:15:31.176 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onStart: FirstFragment
+     * 2021-08-29 14:15:31.176 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onStart: FirstActivity
+     * 2021-08-29 14:15:31.177 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onResume: FirstActivity
+     * 2021-08-29 14:15:31.177 6053-6053/com.ajain11337.base D/OpenActivityLifecycleDebug: onResume: FirstFragment
+     */
     private fun addFragment() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, FirstFragment.newInstance("", ""))
