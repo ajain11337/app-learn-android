@@ -53,7 +53,7 @@ class SecondActivity : AppCompatActivity() {
     private fun addFragment() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, SecondFragment.newInstance("", ""))
-            .addToBackStack(null)
+            //.addToBackStack(null)
             .commit()
     }
 

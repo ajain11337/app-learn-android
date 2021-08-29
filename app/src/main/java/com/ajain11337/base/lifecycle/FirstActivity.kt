@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.ajain11337.base.R
+import com.ajain11337.base.rx.RxUtils
 import com.ajain11337.base.utils.Constants
 
 class FirstActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class FirstActivity : AppCompatActivity() {
         setContentView(R.layout.activity_first)
         addFragment()
         //replaceFragment()
+        startRxStream()
     }
 
     override fun onStart() {
@@ -78,7 +80,7 @@ class FirstActivity : AppCompatActivity() {
     fun openSecondActivity(view: View) {
         val intent = Intent(this, SecondActivity::class.java)
         startActivity(intent)
-        finish()
+        //finish()
     }
 
     /**
@@ -96,7 +98,7 @@ class FirstActivity : AppCompatActivity() {
     private fun addFragment() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, FirstFragment.newInstance("", ""))
-            .addToBackStack(null)
+            //.addToBackStack(null)
             .commit()
     }
 
@@ -105,5 +107,9 @@ class FirstActivity : AppCompatActivity() {
             .replace(R.id.container, FirstFragment.newInstance("", ""))
             .addToBackStack(null)
             .commit()
+    }
+
+    private fun startRxStream(){
+        val disposable = RxUtils().getDisposable()
     }
 }
