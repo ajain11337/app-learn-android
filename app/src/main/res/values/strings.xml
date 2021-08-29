@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">learn-android-app</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="launch_second_activity">Launch Second Activity</string>
+    <string name="first_fragment">First Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
 </resources>
