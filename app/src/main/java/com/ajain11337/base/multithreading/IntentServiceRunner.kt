@@ -7,6 +7,7 @@ import com.ajain11337.base.utils.Constants
 
 /**
  * Link : https://www.zoftino.com/android-intentservice-example
+ * Link : https://www.stechies.com/android-intentservice-example/
  */
 class IntentServiceRunner : IntentService("IntentService") {
     override fun onCreate() {

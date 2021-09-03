@@ -6,14 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.ajain11337.base.R
+import com.ajain11337.base.coroutines.CoroutineUtils
 import com.ajain11337.base.multithreading.AsyncTaskRunner
 import com.ajain11337.base.rx.RxUtils
 import com.ajain11337.base.utils.Constants
+import kotlinx.coroutines.*
 
 class FirstActivity : AppCompatActivity() {
     private val TAG = "FirstActivity"
 
+    @DelicateCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(Constants.LifecycleDebug, "onCreate: $TAG")
@@ -23,6 +27,7 @@ class FirstActivity : AppCompatActivity() {
         startRxStream()
         startAsyncTask()
         startAsyncTask2()
+        startCoroutines()
     }
 
     override fun onStart() {
@@ -136,5 +141,20 @@ class FirstActivity : AppCompatActivity() {
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "", "", "")
         //Thread.sleep(3000)
         //task.cancel(true)
+    }
+
+    @DelicateCoroutinesApi
+    private fun startCoroutines(){
+        lifecycleScope.launch {
+            //CoroutineUtils().callForAsync()
+        }
+
+        lifecycleScope.launch {
+            CoroutineUtils().callForDispatchers()
+        }
+
+        lifecycleScope.launch {
+            //CoroutineUtils().callWithGlobeScope()
+        }
     }
 }

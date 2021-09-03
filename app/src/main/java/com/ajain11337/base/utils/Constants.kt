@@ -6,4 +6,5 @@ object Constants {
     const val AsyncTask = "AsyncTask"
     const val ServiceRunner = "ServiceRunner"
     const val IntentServiceRunner = "IntentServiceRunner"
+    const val CoroutineUtils = "CoroutineUtils"
 }
