@@ -5,4 +5,5 @@ object Constants {
     const val RxDebug = "RxDebug"
     const val AsyncTask = "AsyncTask"
     const val ServiceRunner = "ServiceRunner"
+    const val IntentServiceRunner = "IntentServiceRunner"
 }

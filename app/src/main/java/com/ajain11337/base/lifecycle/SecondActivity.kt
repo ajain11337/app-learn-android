@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.ajain11337.base.R
+import com.ajain11337.base.multithreading.IntentServiceRunner
 import com.ajain11337.base.multithreading.ServiceRunner
 import com.ajain11337.base.utils.Constants
 
@@ -20,7 +21,7 @@ class SecondActivity : AppCompatActivity() {
         addFragment()
         //replaceFragment()
         startServiceRunner()
-        baseContext.startService(Intent(this@SecondActivity, ServiceRunner::class.java))
+        startIntentServiceRunner()
     }
 
     override fun onStart() {
@@ -46,13 +47,13 @@ class SecondActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.d(Constants.LifecycleDebug, "onStop: $TAG")
-        stopServiceRunner()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d(Constants.LifecycleDebug, "onDestroy: $TAG")
         stopServiceRunner()
+        stopIntentServiceRunner()
     }
 
     /**
@@ -73,10 +74,18 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun startServiceRunner(){
-        applicationContext.startService(serviceIntent)
+        baseContext.startService(Intent(this@SecondActivity, ServiceRunner::class.java))
     }
 
     private fun stopServiceRunner(){
-        applicationContext.stopService(serviceIntent)
+        baseContext.stopService(Intent(this@SecondActivity, ServiceRunner::class.java))
+    }
+
+    private fun startIntentServiceRunner(){
+        baseContext.startService(Intent(this@SecondActivity, IntentServiceRunner::class.java))
+    }
+
+    private fun stopIntentServiceRunner(){
+        baseContext.stopService(Intent(this@SecondActivity, IntentServiceRunner::class.java))
     }
 }
