@@ -1,11 +1,13 @@
 package com.ajain11337.base.lifecycle
 
 import android.content.Intent
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.ajain11337.base.R
+import com.ajain11337.base.multithreading.AsyncTaskRunner
 import com.ajain11337.base.rx.RxUtils
 import com.ajain11337.base.utils.Constants
 
@@ -19,6 +21,8 @@ class FirstActivity : AppCompatActivity() {
         addFragment()
         //replaceFragment()
         startRxStream()
+        startAsyncTask()
+        startAsyncTask2()
     }
 
     override fun onStart() {
@@ -111,5 +115,26 @@ class FirstActivity : AppCompatActivity() {
 
     private fun startRxStream(){
         val disposable = RxUtils().getDisposable()
+        disposable?.dispose()
+    }
+
+    /**
+     * Link : https://stackoverflow.com/questions/4068984/running-multiple-asynctasks-at-the-same-time-not-possible
+     * This allows for parallel execution on all android versions with API 4+ (Android 1.6+)
+     */
+    private fun startAsyncTask(){
+        val task = AsyncTaskRunner()
+        //task.execute("Start")
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "", "", "")
+        //Thread.sleep(3000)
+        //task.cancel(true)
+    }
+
+    private fun startAsyncTask2(){
+        val task = AsyncTaskRunner()
+        //task.execute("Start")
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "", "", "")
+        //Thread.sleep(3000)
+        //task.cancel(true)
     }
 }
