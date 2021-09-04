@@ -4,4 +4,8 @@
     <string name="launch_second_activity">Launch Second Activity</string>
     <string name="first_fragment">First Fragment</string>
     <string name="second_fragment">Second Fragment</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
+    <string name="taskb">taskB</string>
+    <string name="taska">taskA</string>
 </resources>
